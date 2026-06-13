@@ -45,6 +45,23 @@ export function PageLayout({
           publicStoreDomain={publicStoreDomain}
         />
       )}
+      <div 
+        className="ticker-container relative z-30 select-none pointer-events-none w-full flex overflow-hidden border-b border-border"
+        style={{
+          backgroundColor: '#E8470A',
+          height: '36px',
+          display: 'flex',
+          alignItems: 'center',
+          overflow: 'hidden'
+        }}
+      >
+        <div className="ticker-track flex w-max animate-[marquee_30s_linear_infinite]">
+          <span className="ticker-text font-mono text-[10px] tracking-[0.15em] text-black font-bold uppercase whitespace-nowrap inline-flex items-center" style={{ color: '#000000' }}>ALL TEES ✦ सारी टीशर्ट्स ✦ THE ARCHIVE ✦ MACHINE AGE INDIA ✦ REEL INDIA ✦ FREQUENCY ✦&nbsp;&nbsp;&nbsp;&nbsp;</span>
+          <span className="ticker-text font-mono text-[10px] tracking-[0.15em] text-black font-bold uppercase whitespace-nowrap inline-flex items-center" style={{ color: '#000000' }}>ALL TEES ✦ सारी टीशर्ट्स ✦ THE ARCHIVE ✦ MACHINE AGE INDIA ✦ REEL INDIA ✦ FREQUENCY ✦&nbsp;&nbsp;&nbsp;&nbsp;</span>
+          <span className="ticker-text font-mono text-[10px] tracking-[0.15em] text-black font-bold uppercase whitespace-nowrap inline-flex items-center" style={{ color: '#000000' }}>ALL TEES ✦ सारी टीशर्ट्स ✦ THE ARCHIVE ✦ MACHINE AGE INDIA ✦ REEL INDIA ✦ FREQUENCY ✦&nbsp;&nbsp;&nbsp;&nbsp;</span>
+          <span className="ticker-text font-mono text-[10px] tracking-[0.15em] text-black font-bold uppercase whitespace-nowrap inline-flex items-center" style={{ color: '#000000' }}>ALL TEES ✦ सारी टीशर्ट्स ✦ THE ARCHIVE ✦ MACHINE AGE INDIA ✦ REEL INDIA ✦ FREQUENCY ✦&nbsp;&nbsp;&nbsp;&nbsp;</span>
+        </div>
+      </div>
       <main>{children}</main>
       <Footer
         footer={footer}

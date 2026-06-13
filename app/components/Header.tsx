@@ -23,11 +23,16 @@ export function Header({
   cart,
   publicStoreDomain,
 }: HeaderProps) {
-  const {shop, menu} = header;
+  const {menu} = header;
   return (
-    <header className="header">
-      <NavLink prefetch="intent" to="/" style={activeLinkStyle} end>
-        <strong>{shop.name}</strong>
+    <header className="header flex items-center justify-between px-4 md:px-8 border-b border-border bg-background h-16 sticky top-0 z-40">
+      <NavLink
+        prefetch="intent"
+        to="/"
+        className="font-display text-xl uppercase tracking-[0.2em] text-primary font-bold transition-all hover:opacity-90"
+        end
+      >
+        Nabbe
       </NavLink>
       <HeaderMenu
         menu={menu}
@@ -62,6 +67,7 @@ export function HeaderMenu({
           onClick={close}
           prefetch="intent"
           style={activeLinkStyle}
+          className="font-body text-xs uppercase tracking-[0.15em] transition-colors py-2 block border-b border-border/30"
           to="/"
         >
           Home
@@ -79,7 +85,7 @@ export function HeaderMenu({
             : item.url;
         return (
           <NavLink
-            className="header-menu-item"
+            className="header-menu-item font-body text-xs uppercase tracking-[0.15em] transition-colors py-2 block hover:text-primary md:inline-block"
             end
             key={item.id}
             onClick={close}
@@ -100,9 +106,14 @@ function HeaderCtas({
   cart,
 }: Pick<HeaderProps, 'isLoggedIn' | 'cart'>) {
   return (
-    <nav className="header-ctas" role="navigation">
+    <nav className="header-ctas flex items-center gap-2 md:gap-4" role="navigation">
       <HeaderMenuMobileToggle />
-      <NavLink prefetch="intent" to="/account" style={activeLinkStyle}>
+      <NavLink
+        prefetch="intent"
+        to="/account"
+        style={activeLinkStyle}
+        className="font-body text-xs uppercase tracking-[0.12em] hover:text-primary transition-colors hidden sm:block py-2"
+      >
         <Suspense fallback="Sign in">
           <Await resolve={isLoggedIn} errorElement="Sign in">
             {(isLoggedIn) => (isLoggedIn ? 'Account' : 'Sign in')}
@@ -119,10 +130,13 @@ function HeaderMenuMobileToggle() {
   const {open} = useAside();
   return (
     <button
-      className="header-menu-mobile-toggle reset"
+      className="header-menu-mobile-toggle text-foreground hover:text-primary transition-colors p-2 md:hidden"
       onClick={() => open('mobile')}
+      aria-label="Open menu"
     >
-      <h3>☰</h3>
+      <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
     </button>
   );
 }
@@ -130,8 +144,14 @@ function HeaderMenuMobileToggle() {
 function SearchToggle() {
   const {open} = useAside();
   return (
-    <button className="reset" onClick={() => open('search')}>
-      Search
+    <button
+      onClick={() => open('search')}
+      aria-label="Search"
+      className="text-foreground hover:text-primary transition-colors p-2 flex items-center"
+    >
+      <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+      </svg>
     </button>
   );
 }
@@ -153,8 +173,17 @@ function CartBadge({count}: {count: number | null}) {
           url: window.location.href || '',
         } as CartViewPayload);
       }}
+      className="relative text-foreground hover:text-primary transition-colors p-2 flex items-center"
+      aria-label="Cart"
     >
-      Cart {count === null ? <span>&nbsp;</span> : count}
+      <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+      </svg>
+      {count !== null && count > 0 && (
+        <span className="absolute top-0 right-0 bg-primary text-primary-foreground font-mono text-[9px] font-bold rounded-full w-4 h-4 flex items-center justify-center scale-90 ring-1 ring-background">
+          {count}
+        </span>
+      )}
     </a>
   );
 }
@@ -225,7 +254,7 @@ function activeLinkStyle({
   isPending: boolean;
 }) {
   return {
-    fontWeight: isActive ? 'bold' : undefined,
-    color: isPending ? 'grey' : 'black',
+    fontWeight: isActive ? '500' : undefined,
+    color: isPending ? 'grey' : isActive ? 'hsl(var(--primary))' : 'hsl(var(--foreground))',
   };
 }
