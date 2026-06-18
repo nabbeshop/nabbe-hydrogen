@@ -148,12 +148,13 @@ export function Layout({children}: {children?: React.ReactNode}) {
     <html lang="en">
       <head>
         <meta charSet="utf-8" />
+          <meta name="google-site-verification" content="m-AqzI84I4bRjyIvam6QP0HFvpMlKQfrzHX_TzyyH1M" />
         <meta name="viewport" content="width=device-width,initial-scale=1" />
         <link rel="stylesheet" href={resetStyles}></link>
         <link rel="stylesheet" href={appStyles}></link>
         <Meta />
         <Links />
-        <meta name="google-site-verification" content="m-AqzI84I4bRjyIvam6QP0HFvpMlKQfrzHX_TzyyH1M" />
+        
       </head>
       <body>
         {children}
