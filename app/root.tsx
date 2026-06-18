@@ -153,6 +153,7 @@ export function Layout({children}: {children?: React.ReactNode}) {
         <link rel="stylesheet" href={appStyles}></link>
         <Meta />
         <Links />
+        <meta name="google-site-verification" content="m-AqzI84I4bRjyIvam6QP0HFvpMlKQfrzHX_TzyyH1M" />
       </head>
       <body>
         {children}
