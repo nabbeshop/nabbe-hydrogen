@@ -163,6 +163,8 @@ export function Layout({children}: {children?: React.ReactNode}) {
       <body>
         {children}
         <ScrollRestoration nonce={nonce} />
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZLPX5JEYE4"></script>
+        <script dangerouslySetInnerHTML={{__html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-ZLPX5JEYE4');`}} />
         <Scripts nonce={nonce} />
       </body>
     </html>
