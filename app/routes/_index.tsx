@@ -11,7 +11,10 @@ import type {
 } from 'storefrontapi.generated';
 
 export const meta: Route.MetaFunction = () => {
-  return [{title: 'Hydrogen | Home'}];
+  return [
+    {title: 'Hydrogen | Home'},
+    {name: 'google-site-verification', content: 'm-AqzI84I4bRjyIvam6QP0HFvpMlKQfrzHX_TzyyH1M'},
+  ];
 };
 
 export async function loader(args: Route.LoaderArgs) {
