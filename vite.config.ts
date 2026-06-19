@@ -30,3 +30,4 @@ export default defineConfig({
     allowedHosts: ['.tryhydrogen.dev'],
   },
 });
+// rebuild trigger 2026-06-19
