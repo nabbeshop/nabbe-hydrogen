@@ -65,10 +65,6 @@ export function links() {
   ];
 }
 
-export const meta = () => [
-  { name: 'google-site-verification', content: 'm-AqzI84I4bRjyIvam6QP0HFvpMlKQfrzHX_TzyyH1M' },
-];
-
 export async function loader(args: Route.LoaderArgs) {
   // Start fetching non-critical data without blocking time to first byte
   const deferredData = loadDeferredData(args);
